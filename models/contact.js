@@ -1,6 +1,7 @@
-const { Schema, model } = require("mongoose");
-const { handleMongooseError } = require("../helpers");
 const Joi = require("joi");
+const { Schema, model } = require("mongoose");
+
+const { handleMongooseError } = require("../helpers");
 
 const contactSchema = new Schema(
     {
@@ -17,6 +18,10 @@ const contactSchema = new Schema(
         favorite: {
             type: Boolean,
             default: false,
+        },
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: "user",
         },
     },
     { versionKey: false, timestamps: true }
